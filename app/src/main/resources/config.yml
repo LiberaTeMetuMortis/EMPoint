@@ -1,0 +1,20 @@
+messages:
+  forOnlyPlayers: "&cBu komudu sadece oyuncular kullanabilir."
+  balance: "&b{balance} sayıda EM pointiniz var."
+  balanceOthers: "&b{player} isimli kişinin {balance} EM pointi var"
+  noPerm: "&cBunu yapmak için gerekli yetkiye sahip değilsiniz."
+  notEnoughBalance: "&c{player} isimli kişinin yeterli pointi yok."
+  successfullySet: "Başarıyla {player} isimli kişinin pointini {balance} olarak ayarladınız."
+  successfullyReset: "Başarıyla {player} isimli kişinin pointini sıfırladınız."
+  successfullyGiven: "Başarıyla {player} isimli kişiye {balance} miktarda point verdiniz"
+  successfullyTaken: "Başarıyla {player} isimli kişiden {balance} miktarda point aldınız"
+  successfullyReloaded: "Plugin başarıyla yeniden başlatıldı. Aynı zamanda datalar dosyaya kaydedildi."
+  automaticBackup: "Plugin otomatik olarak yedekleniyor"
+usages:
+  give: "Bu komutun kullanımı /em give <oyuncu> <miktar>"
+  take: "Bu komutun kullanımı /em take <oyuncu> <miktar>"
+  set: "Bu komutun kullanımı /em set <oyuncu> <miktar>"
+  reset: "B komutun kullanımı /em reset <oyuncu>"
+settings:
+  #In minutes
+  autoRestartPeriod: 30

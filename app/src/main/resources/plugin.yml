@@ -1,0 +1,10 @@
+main: me.em.point
+name: EMPoint
+author: MetuMortis
+api-version: 1.18
+version: 1.0
+softdepend: ["PlaceholderAPI"]
+commands:
+  em:
+    description: "Plugin's main command"
+    usage: "/em <operation>"
