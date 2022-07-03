@@ -4,15 +4,19 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.command.ConsoleCommandSender
-import me.em.point.Companion.publicConfig
-import me.em.point.Companion.translateColors
-import me.em.point.Companion.publicPointData
-import me.em.point.Companion.reload
+import me.em.EMPoint.Companion.publicConfig
+import me.em.EMPoint.Companion.translateColors
+import me.em.EMPoint.Companion.publicPointData
+import me.em.EMPoint.Companion.reload
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
 
-class command(val plugin: JavaPlugin) : CommandExecutor {
+class Command(val plugin: JavaPlugin) : CommandExecutor {
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
+        if(args.isEmpty()){
+            sender.sendMessage(publicConfig.getStringList("helpMessage").map(::translateColors).joinToString("\n"))
+            return true
+        }
         if(args[0].equals("points", ignoreCase = true)) {
             if(args.size == 2 && sender.hasPermission("em.points.others")){
 

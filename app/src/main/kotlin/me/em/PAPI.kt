@@ -1,8 +1,8 @@
 package me.em
 import me.clip.placeholderapi.expansion.PlaceholderExpansion
 import org.bukkit.OfflinePlayer
-import me.em.point.Companion.sortedPointList
-import me.em.point.Companion.publicPointData
+import me.em.EMPoint.Companion.sortedPointList
+import me.em.EMPoint.Companion.publicPointData
 
 class PAPI : PlaceholderExpansion() {
     override fun getAuthor(): String {

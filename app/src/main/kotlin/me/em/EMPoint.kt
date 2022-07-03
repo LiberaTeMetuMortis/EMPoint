@@ -5,13 +5,13 @@ import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.scheduler.BukkitRunnable
 
-class point : JavaPlugin(){
+class EMPoint : JavaPlugin(){
     override fun onEnable() {
         this.saveDefaultConfig()
         this.reloadConfig()
         publicConfig = config
         sortAndReloadPoints(this)
-        server.getPluginCommand("em")!!.setExecutor(command(this))
+        server.getPluginCommand("prestij")!!.setExecutor(Command(this))
         startTimer(this)
         if(server.pluginManager.getPlugin("PlaceholderAPI") != null) PAPI().register()
     }
@@ -20,7 +20,7 @@ class point : JavaPlugin(){
         publicPointData.saveConfig()
     }
     companion object{
-        lateinit var publicPointData: data
+        lateinit var publicPointData: Data
         lateinit var publicConfig: FileConfiguration
         lateinit var sortedPointList: List<MutableMap.MutableEntry<String, Long>>
         fun translateColors(str: String) = ChatColor.translateAlternateColorCodes('&', str)
@@ -32,7 +32,7 @@ class point : JavaPlugin(){
             }.also { it.runTaskTimer(plugin, publicConfig.getInt("settings.autoRestartPeriod")*1200L, publicConfig.getInt("settings.autoRestartPeriod")*1200L) }
         }
         private fun sortAndReloadPoints(plugin: JavaPlugin){
-            val pointData =  data(plugin)
+            val pointData =  Data(plugin)
             pointData.saveDefaultConfig()
             pointData.reloadConfig()
             publicPointData = pointData
@@ -42,7 +42,7 @@ class point : JavaPlugin(){
                 val point = publicPointData.config!!.getLong(path)
                 pointMap[name] = point
             }
-            val playerPointMap = ArrayList(pointMap.toSortedMap(compareByDescending{ pointMap[it] }).entries)
+            val playerPointMap = ArrayList(pointMap.toSortedMap(compareByDescending<String> { pointMap[it] }.thenByDescending { it }).entries)
             val size = if (playerPointMap.size < 10) playerPointMap.size-1 else 9
             sortedPointList = playerPointMap.slice(0..size)
         }

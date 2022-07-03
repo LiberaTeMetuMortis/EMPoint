@@ -1,10 +1,11 @@
-main: me.em.point
+main: me.em.EMPoint
 name: EMPoint
 author: MetuMortis
 api-version: 1.18
 version: 1.0
 softdepend: ["PlaceholderAPI"]
 commands:
-  em:
-    description: "Plugin's main command"
-    usage: "/em <operation>"
+  prestij:
+    description: "Plugin's main Command"
+    usage: "/presitj <operation>"
+

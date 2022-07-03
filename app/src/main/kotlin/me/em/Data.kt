@@ -8,7 +8,7 @@ import java.io.IOException
 import java.io.InputStreamReader
 import java.util.logging.Level
 
-class data(private val plugin: Plugin) {
+class Data(private val plugin: Plugin) {
     private var dataConfig: FileConfiguration? = null
     private var configFile: File? = null
 
@@ -18,10 +18,10 @@ class data(private val plugin: Plugin) {
 
     fun reloadConfig() {
         if (configFile == null) {
-            configFile = File(plugin.dataFolder, "data.yml")
+            configFile = File(plugin.dataFolder, "Data.yml")
         }
         dataConfig = YamlConfiguration.loadConfiguration(configFile!!)
-        val defaultStream = plugin.getResource("data.yml")
+        val defaultStream = plugin.getResource("Data.yml")
         if (defaultStream != null) {
             val defaultConfig = YamlConfiguration.loadConfiguration(InputStreamReader(defaultStream))
             (dataConfig as YamlConfiguration).setDefaults(defaultConfig)
@@ -47,10 +47,10 @@ class data(private val plugin: Plugin) {
 
     fun saveDefaultConfig() {
         if (configFile == null) {
-            configFile = File(plugin.dataFolder, "data.yml")
+            configFile = File(plugin.dataFolder, "Data.yml")
         }
         if (!configFile!!.exists()) {
-            plugin.saveResource("data.yml", false)
+            plugin.saveResource("Data.yml", false)
         }
     }
 
