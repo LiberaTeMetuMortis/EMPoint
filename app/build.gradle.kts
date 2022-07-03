@@ -38,7 +38,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("me.em.point")
+    mainClass.set("me.em.EMPoint")
 }
 
 
@@ -57,7 +57,7 @@ java {
 
 tasks.withType<Jar> {
     manifest {
-        attributes["Main-Class"] = "me.em.point"
+        attributes["Main-Class"] = "me.em.EMPoint"
     }
     destinationDirectory.set(file("/home/metumortis/Desktop/Sunucu Kurma Klasörü/plugins/"))
 }
