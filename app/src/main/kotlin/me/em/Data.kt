@@ -18,10 +18,10 @@ class Data(private val plugin: Plugin) {
 
     fun reloadConfig() {
         if (configFile == null) {
-            configFile = File(plugin.dataFolder, "Data.yml")
+            configFile = File(plugin.dataFolder, "data.yml")
         }
         dataConfig = YamlConfiguration.loadConfiguration(configFile!!)
-        val defaultStream = plugin.getResource("Data.yml")
+        val defaultStream = plugin.getResource("data.yml")
         if (defaultStream != null) {
             val defaultConfig = YamlConfiguration.loadConfiguration(InputStreamReader(defaultStream))
             (dataConfig as YamlConfiguration).setDefaults(defaultConfig)
@@ -47,10 +47,10 @@ class Data(private val plugin: Plugin) {
 
     fun saveDefaultConfig() {
         if (configFile == null) {
-            configFile = File(plugin.dataFolder, "Data.yml")
+            configFile = File(plugin.dataFolder, "data.yml")
         }
         if (!configFile!!.exists()) {
-            plugin.saveResource("Data.yml", false)
+            plugin.saveResource("data.yml", false)
         }
     }
 

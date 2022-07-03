@@ -72,9 +72,9 @@ class Command(val plugin: JavaPlugin) : CommandExecutor {
                 return true
             }
             val playerName = args[1]
-            val amount = args[2].toLongOrNull()
+            val amount = args[2].toLong()
             val currentAmount = publicPointData.config!!.getLong("players.$playerName", 0L)
-            if(amount as Long > currentAmount){
+            if(amount > currentAmount){
                 sender.sendMessage(publicConfig.getString("messages.notEnoughBalance")?.let(::translateColors))
                 return true
             }
