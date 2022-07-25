@@ -1,2 +1,2 @@
 #EMPoint
-Basic untradable coin plugin with PlaceholderAPI support
+> Basic untradable coin plugin with PlaceholderAPI support
