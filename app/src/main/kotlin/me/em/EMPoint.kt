@@ -1,9 +1,9 @@
 package me.em
-
 import org.bukkit.ChatColor
 import org.bukkit.configuration.file.FileConfiguration
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.scheduler.BukkitRunnable
+import java.util.regex.Pattern
 
 class EMPoint : JavaPlugin(){
     override fun onEnable() {
@@ -11,7 +11,7 @@ class EMPoint : JavaPlugin(){
         this.reloadConfig()
         publicConfig = config
         sortAndReloadPoints(this)
-        server.getPluginCommand("prestij")!!.setExecutor(Command(this))
+        server.getPluginCommand("em")!!.setExecutor(Command(this))
         startTimer(this)
         if(server.pluginManager.getPlugin("PlaceholderAPI") != null) PAPI().register()
     }
@@ -23,7 +23,33 @@ class EMPoint : JavaPlugin(){
         lateinit var publicPointData: Data
         lateinit var publicConfig: FileConfiguration
         lateinit var sortedPointList: List<MutableMap.MutableEntry<String, Long>>
-        fun translateColors(str: String) = ChatColor.translateAlternateColorCodes('&', str)
+
+
+        fun hexToRGB(hex: String): Map<String, Int?> {
+            return mapOf(
+                "R" to hex.slice(0 until 2).toIntOrNull(16),
+                "G" to hex.slice(2 until 4).toIntOrNull(16),
+                "B" to hex.slice(4 until 6).toIntOrNull(16)
+            )
+        }
+
+
+        fun translateColors(str: String): String {
+
+            if("&#[0-9a-f]{6}".toRegex().containsMatchIn(str)){
+                var parsedStr = str
+                //println(str.replace("&#([0-9a-f]{6})".toRegex(), "\u00A7$1"));
+                for (x in "&(#[0-9A-f]{6})".toRegex().findAll(str)){
+                    parsedStr = parsedStr.replaceFirst(x.value.toRegex(), net.md_5.bungee.api.ChatColor.of(x.value.slice(
+                        1 until x.value.length
+                    )).toString())
+                }
+
+                return ChatColor.translateAlternateColorCodes('&', parsedStr)
+            }
+
+            return ChatColor.translateAlternateColorCodes('&', str)
+        }
         fun startTimer(plugin: JavaPlugin){
             object : BukkitRunnable() {
                 override fun run() {

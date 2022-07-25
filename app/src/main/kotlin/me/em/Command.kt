@@ -8,6 +8,7 @@ import me.em.EMPoint.Companion.publicConfig
 import me.em.EMPoint.Companion.translateColors
 import me.em.EMPoint.Companion.publicPointData
 import me.em.EMPoint.Companion.reload
+import org.bukkit.ChatColor
 import org.bukkit.entity.Player
 import org.bukkit.plugin.java.JavaPlugin
 

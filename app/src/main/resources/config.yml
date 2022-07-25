@@ -14,10 +14,10 @@ helpMessage:
   - "First message"
   - "Second message"
 usages:
-  give: "Usage of this command is /prestij give <player> <amount>."
-  take: "Usage of this command is /prestij take <player> <amount>"
-  set: "Usage of this command is /prestij set <player> <amount>"
-  reset: "Usage of this command is /prestij reset <player>"
+  give: "Usage of this command is /em give <player> <amount>."
+  take: "Usage of this command is /em take <player> <amount>"
+  set: "Usage of this command is /em set <player> <amount>"
+  reset: "Usage of this command is /em reset <player>"
 settings:
   #In minutes
   autoRestartPeriod: 30
